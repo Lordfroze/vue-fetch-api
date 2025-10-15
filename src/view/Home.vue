@@ -1,11 +1,43 @@
 <script setup>
 import ProductCard from '@/components/ProductCard.vue'
 import Pagination from '@/components/Pagination.vue'
+import { ref, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted } from 'vue';
 
+const page = ref(1) 
+
+function nextPage () {
+	page.value++;
+}
+
+onBeforeMount(() => {
+	console.log('onBeforeMount')
+})
+
+onMounted(() => {
+	console.log('onMounted')
+})
+
+onBeforeUpdate(() => {
+	console.log('onBeforeUpdate')
+})
+
+onUpdated(() => {
+	console.log('onUpdated')
+})
+
+onBeforeUnmount(() => {
+	console.log('onBeforeUnmount')
+})
+
+onUnmounted(() => {
+	console.log('onUnmounted')
+})
 </script>
 
 <template>
 	<main>
+		{{ page }}
+		 <button @click="nextPage">Next Page</button>
 		<div class="product-grid">
 			<ProductCard />
 		</div>
