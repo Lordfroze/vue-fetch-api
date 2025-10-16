@@ -1,43 +1,30 @@
 <script setup>
 import ProductCard from '@/components/ProductCard.vue'
 import Pagination from '@/components/Pagination.vue'
-import { ref, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted } from 'vue';
 
-const page = ref(1) 
+import { ref } from 'vue';
+import axios from 'axios'; // import axios
 
-function nextPage () {
-	page.value++;
-}
+const products = ref([]); // membuat state products dengan nilai awal array kosong
 
-onBeforeMount(() => {
-	console.log('onBeforeMount')
-})
+// menggunakan await secara langsung
+products.value = await axios
+.get('http://localhost:3000/products')
+.then((res) => res.data);
+console.log(products.value);
 
-onMounted(() => {
-	console.log('onMounted')
-})
+// async function getProducts() { 
+// 		const response = await axios.get('http://localhost:3000/products');
+// 		products.value = response.data; // assign data ke state products
+// 		console.log(response.data);
+// }
 
-onBeforeUpdate(() => {
-	console.log('onBeforeUpdate')
-})
-
-onUpdated(() => {
-	console.log('onUpdated')
-})
-
-onBeforeUnmount(() => {
-	console.log('onBeforeUnmount')
-})
-
-onUnmounted(() => {
-	console.log('onUnmounted')
-})
+// getProducts(); // panggil function getProducts saat component di render
 </script>
 
 <template>
 	<main>
-		{{ page }}
-		 <button @click="nextPage">Next Page</button>
+		{{ products }}
 		<div class="product-grid">
 			<ProductCard />
 		</div>

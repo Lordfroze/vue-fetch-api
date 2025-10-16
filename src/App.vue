@@ -1,11 +1,22 @@
 <script setup>
-import { RouterView, RouterLink } from 'vue-router';
+import { Suspense } from 'vue';
+import { RouterView } from 'vue-router';
+import HomeView from '@/view/Home.vue'
 </script>
 
 <template>
-  <RouterLink to="/">Home</RouterLink>
-  <RouterLink to="/about">About</RouterLink>
-  <RouterView />
+  <!-- <RouterView /> -->
+
+  <!-- menggunakan Suspense -->
+   <Suspense>
+    <template #default> <!-- render HomeView jika data sudah ada -->
+      <HomeView />
+    </template>
+    <template #fallback> <!-- render fallback jika data belum ada -->
+      <div>Loading...</div>
+    </template>
+   </Suspense>
+
 </template>
 
 <style scoped>
