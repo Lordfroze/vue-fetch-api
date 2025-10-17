@@ -1,9 +1,16 @@
+<script setup>
+// menerima props product dari parent component
+const {product} = defineProps({
+    product: Object,
+});
+</script>
+
 <template>
     <div class="product-card">
-        <img src="" alt="Product 1" class="product-image" />
-        <h2 class="product-title">Product 1</h2>
-        <p class="product-description">Short description for Product 1.</p>
-        <span class="product-price">Rp 100.000</span>
+        <img :src="product.image" alt="Product 1" class="product-image" />
+        <h2 class="product-title">{{ product.title }}</h2>
+        <p class="product-description">{{ product.description }}</p>
+        <span class="product-price">Rp {{ product.price }}</span>
     </div>
 </template>
 

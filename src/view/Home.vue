@@ -7,26 +7,19 @@ import axios from 'axios'; // import axios
 
 const products = ref([]); // membuat state products dengan nilai awal array kosong
 
-// menggunakan await secara langsung
+// menggunakan await secara langsung untuk dirender dengan Suspense
 products.value = await axios
 .get('http://localhost:3000/products')
 .then((res) => res.data);
 console.log(products.value);
-
-// async function getProducts() { 
-// 		const response = await axios.get('http://localhost:3000/products');
-// 		products.value = response.data; // assign data ke state products
-// 		console.log(response.data);
-// }
-
-// getProducts(); // panggil function getProducts saat component di render
 </script>
 
 <template>
 	<main>
-		{{ products }}
+		<!-- {{ products }} -->
 		<div class="product-grid">
-			<ProductCard />
+			<!-- menampilkan setiap product menggunakan v-for dan passing product sebagai props ke ProductCard -->
+			<ProductCard v-for="product in products" :key="product.id" :product="product" />
 		</div>
 		<div class="pagination">
 			<Pagination />
@@ -50,6 +43,4 @@ console.log(products.value);
 	align-items: center;
 	margin-top: 20px;
 }
-
-
 </style>
