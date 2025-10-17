@@ -23,7 +23,16 @@ watch(page, async () => {
 });
 
 console.log(products.value);
+
+// Membuat fungsi changePage
+function changePage(newPage) {
+	if (newPage < 1) return; // jika newPage kurang dari 1, maka return
+	if (newPage > products.value.pages) return; // return jika newPage lebih besar dari pages,variabel pages didapatkan dari respon server http://localhost:3000/products?_page=1&_per_page=8
+	page.value = newPage; // mengubah nilai page dengan newPage
+}
+
 </script>
+
 
 <template>
 	<main>
@@ -36,7 +45,11 @@ console.log(products.value);
 			:product="product" />
 		</div>
 		<div class="pagination">
-			<Pagination />
+			<Pagination 
+			:page= "page"
+			:totalPages = "products.pages"
+			@change-Page="changePage"
+			/>
 		</div>
 	</main>
 </template>
