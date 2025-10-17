@@ -4,10 +4,10 @@ const props = defineProps({
 	totalPages : Number,
 });
 
-const emit = defineEmits(['change-Page']);
+const emit = defineEmits(['change-Page']); // mendefinisikan event change-Page ,defineEmits berfungsi untuk mendefinisikan event yang akan diemit
 
-function changePage(newPage){
-	emit('change-Page', newPage);
+function changePage(newPage){ // 
+	emit('change-Page', newPage); // emit atau panggil event change-Page berisi newPage
 }
 
 </script>

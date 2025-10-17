@@ -44,7 +44,9 @@ function changePage(newPage) {
 			:key="index" 
 			:product="product" />
 		</div>
-		<div class="pagination">
+		<div class="pagination"> <!-- menampilkan pagination -->
+			<!-- mengirimkan page dan totalPages ke Pagination -->
+			 <!-- mengirimkan changePage ke Pagination -->
 			<Pagination 
 			:page= "page"
 			:totalPages = "products.pages"
