@@ -3,49 +3,31 @@ import ProductCard from '@/components/ProductCard.vue'
 import Pagination from '@/components/Pagination.vue'
 import Loading from '@/components/Loading.vue'
 
-import { onMounted, ref, watch } from 'vue'; // import ref dan watch dari vue
+import { ref, watchEffect } from 'vue'; // import ref dan watch dari vue
 import axios from 'axios'; // import axios
 
 const products = ref([]); // membuat state products dengan nilai awal array kosong
 const page = ref(1); // membuat state page dengan nilai awal 1
 const limit = ref(8); // membuat state limit dengan nilai awal 8
-const API_URL = `http://localhost:3000/products?_page=${page.value}&_per_page=${limit.value}`; // membuat state API_URL dengan nilai awal http://localhost:3000/products
 const isLoading = ref(true); // membuat state isLoading dengan nilai awal true
 
-// menggunakan await secara langsung untuk dirender dengan Suspense
-// products.value = await axios
-// .get(`http://localhost:3000/products?_page=${page.value}&_per_page=${limit.value}`) // mengubah url dengan page dan limit
-// .then((res) => res.data);
-
-// membuat onMounted untuk menampilkan data product ketika halaman pertama kali di load
-onMounted(async () => {
-	try{
+async function fectchdata() {
+	const API_URL = `http://localhost:3000/products?_page=${page.value}&_per_page=${limit.value}`; // membuat state API_URL dengan nilai awal http://localhost:3000/products
+	try {
 		isLoading.value = true; // mengubah nilai isLoading menjadi true sebelum data product di load
-		// menambahkan await untuk menunggu data product dari server
-		products.value = await axios.get(API_URL).then((res) => res.data);
+		const response = await axios.get(API_URL);
+		products.value = response.data;
 	} catch (error) {
 		console.log(error);
 	} finally {
 		isLoading.value = false; // mengubah nilai isLoading menjadi false setelah data product di load
 	}
-	
-});
+}
 
-// membuat fungsi watch untuk menampilkan data product ketika page / limit berubah
-watch(page, async () => {
-	try{
-		isLoading.value = true; // mengubah nilai isLoading menjadi true sebelum data product di load
-		// menambahkan await untuk menunggu data product dari server
-		products.value = await axios.get(`http://localhost:3000/products?_page=${page.value}&_per_page=${limit.value}`).then((res) => res.data);
-	}
-	 catch (error) {
-		console.log(error);
-	} finally {
-		isLoading.value = false; // mengubah nilai isLoading menjadi false setelah data product di load
-	}
+// Membuat watcher effect untuk memanggil fectchdata setiap kali page atau limit berubah
+watchEffect(() => {
+	fectchdata(); // memanggil fectchdata
 });
-
-console.log(products.value);
 
 // Membuat fungsi changePage
 function changePage(newPage) {
