@@ -3,10 +3,20 @@
 const {product} = defineProps({
     product: Object,
 });
+
+// import userouter from '@/router'
+import { useRouter } from 'vue-router'
+const router = useRouter();
+
+// membuat function goToProduct
+function goToProduct() {
+    router.push(`/product/${product.id}`);
+}
+
 </script>
 
 <template>
-    <div class="product-card">
+    <div class="product-card" @click="goToProduct"> <!-- mengarahkan ke ProductView -->
         <img :src="product.image" alt="Product 1" class="product-image" />
         <h2 class="product-title">{{ product.title }}</h2>
         <p class="product-description">{{ product.description }}</p>
