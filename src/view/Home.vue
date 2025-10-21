@@ -37,6 +37,15 @@ function changePage(newPage) {
 	page.value = newPage; // mengubah nilai page dengan newPage
 }
 
+// Membuat fungsi Create data product
+async function createProduct(product) {
+	try {
+		await axios.post('http://localhost:3000/products', product); // membuat data product ke API_URL method sesuai api dari jsonserver
+		fectchdata(); // memanggil fectchdata setelah membuat data product
+	} catch (error) {
+		console.error(error);
+	}
+}
 </script>
 
 
@@ -47,7 +56,7 @@ function changePage(newPage) {
 		</div>
 
 	<main v-else>
-		<ProductForm /> <!-- menampilkan form product -->
+		<ProductForm @create-product="createProduct" /> <!-- membuat emit create-product yang akan dikrim ke halaman src/components/ProductForm.vue -->
 		<div class="product-grid">
 			<!-- menampilkan setiap product menggunakan v-for dan passing product sebagai props ke ProductCard -->
 			 <!-- karena menggunakan axios, data product ada di dalam property data -->

@@ -405,6 +405,20 @@
       "description": "data sangat baru",
       "price": 199.99,
       "image": "https://placehold.co/150"
+    },
+    {
+      "id": "fc9d",
+      "title": "produk baru",
+      "description": "ini adalah produk baru",
+      "price": 123,
+      "image": "https://placehold.co/150"
+    },
+    {
+      "id": "874a",
+      "title": "test",
+      "description": "test lagi",
+      "price": 12345,
+      "image": "https://placehold.co/150"
     }
   ]
 }

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, defineEmits, watchEffect, computed } from 'vue';
+import { ref, defineEmits, watchEffect, computed } from 'vue'; // import ref, defineEmits, watchEffect, computed dari vue
 
 const props = defineProps({
 	product: Object,
@@ -23,8 +23,9 @@ watchEffect(() => {
 const showForm = ref(false); // membuat ref showForm dengan nilai awal false
 const isUpdate = computed(() => !!props.product);
 
-const emit = defineEmits(['create-product', 'update-product']);
+const emit = defineEmits(['create-product', 'update-product']); // membuat emit create-product dan update-product
 
+// Membuat fungsi saveProduct
 function saveProduct() {
 	const formData = {
 		title: title.value,
@@ -35,7 +36,7 @@ function saveProduct() {
 	if (isUpdate.value) {
 		emit('update-product', formData);
 	} else {
-		emit('create-product', formData);
+		emit('create-product', formData); // menjalankan emit create-product
 	}
 }
 </script>
@@ -47,7 +48,7 @@ function saveProduct() {
 			{{ isUpdate ? 'Edit' : 'Add' }} Product
 		</button>
 		<div v-if="showForm" class="product-form"> <!-- menampilkan form product jika showForm bernilai true -->
-			<form @submit.prevent="saveProduct"> <!-- mencegah submit form default yang mengarah ke halaman lain -->
+			<form @submit.prevent="saveProduct"> <!-- mencegah submit form default,dan memanggil fungsi saveProduct -->
 				<label for="title">Title:</label>
 				<input type="text" id="title" v-model="title" required />
 				<label for="description">Description:</label>
