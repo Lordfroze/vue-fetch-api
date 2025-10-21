@@ -4,18 +4,18 @@ import { useRoute, useRouter } from 'vue-router'; // import useRoute dan useRout
 import axios from 'axios'; // import axios dari axios
 // import ProductForm from '@/components/ProductForm.vue'; // import ProductForm dari @/components/ProductForm.vue
 
-const route = useRoute(); 
-const router = useRouter();
+const route = useRoute(); // memanggil useRoute dan assign ke route
+const router = useRouter(); // memanggil useRouter dan assign ke router
 
 const id = route.params.id; // mengambil id dari route params
 const product = ref({}); // membuat ref product dengan nilai awal {}
-const API_URL = `http://localhost:3000/products/${id}`;
+const API_URL = `http://localhost:3000/products/${id}`; // membuat endpoint API_URL
 
 onMounted(() => { // onMounted akan dijalankan setelah component di render
 	fetchData(); // fetchData akan dijalankan setelah component di render
 });
 
-// fungsi memuat data product dari API
+// fungsi menampilkan data product dari API
 async function fetchData() { // fetchData akan dijalankan setelah component di render
 	try {
 		const response = await axios.get(API_URL); // fetch data dari API_URL
@@ -34,10 +34,11 @@ async function updateProduct(product) {
 	}
 }
 
+// fungsi menghapus data product dari API
 async function deleteProduct() {
 	try {
-		await axios.delete(API_URL);
-		router.push('/');
+		await axios.delete(API_URL); // menghapus data product dari API_URL method sesuai api dari jsonserver
+		router.push('/'); // redirect ke halaman utama setelah menghapus data product
 	} catch (error) {
 		console.error(error);
 	}
@@ -51,8 +52,8 @@ async function deleteProduct() {
 		<p>{{ product.description }}</p>
 		<p>Rp{{ product.price }}</p>
 		<ProductForm :product="product" @update-product="updateProduct" />
-		<router-link to="/" class="back-button">Back</router-link>
-		<button @click="deleteProduct" class="delete-button">Delete</button>
+		<router-link to="/" class="back-button">Back</router-link> <!-- tombol back -->
+		<button @click="deleteProduct" class="delete-button">Delete</button> <!-- tombol delete -->
 	</div>
 </template>
 

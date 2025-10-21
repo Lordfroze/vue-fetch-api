@@ -1,31 +1,10 @@
 {
   "products": [
     {
-      "id": "1",
-      "title": "Smartphone Galaxy S22",
-      "description": "The latest flagship smartphone with advanced camera features and 5G connectivity.",
-      "price": 899.99,
-      "image": "https://placehold.co/150"
-    },
-    {
-      "id": "2",
-      "title": "Laptop ProBook X360",
-      "description": "A versatile 2-in-1 laptop with a powerful processor and long-lasting battery life.",
-      "price": 1299.99,
-      "image": "https://placehold.co/150"
-    },
-    {
       "id": "3",
       "title": "Wireless Noise-Canceling Headphones",
       "description": "Immerse yourself in high-quality audio with these comfortable and noise-canceling headphones.",
       "price": 199.99,
-      "image": "https://placehold.co/150"
-    },
-    {
-      "id": "4",
-      "title": "Ultra HD 4K Smart TV",
-      "description": "Experience stunning visuals and smart features on this large-screen 4K television.",
-      "price": 1499.99,
       "image": "https://placehold.co/150"
     },
     {
