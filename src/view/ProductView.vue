@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue'; // import onMounted dan ref dari vue
 import { useRoute, useRouter } from 'vue-router'; // import useRoute dan useRouter dari vue-router
 import axios from 'axios'; // import axios dari axios
-// import ProductForm from '@/components/ProductForm.vue'; // import ProductForm dari @/components/ProductForm.vue
+import ProductForm from '@/components/ProductForm.vue'; // import ProductForm dari @/components/ProductForm.vue
 
 const route = useRoute(); // memanggil useRoute dan assign ke route
 const router = useRouter(); // memanggil useRouter dan assign ke router
@@ -51,7 +51,7 @@ async function deleteProduct() {
 		<img :src="product.image" :alt="product.title" class="product-image" />
 		<p>{{ product.description }}</p>
 		<p>Rp{{ product.price }}</p>
-		<ProductForm :product="product" @update-product="updateProduct" />
+		<ProductForm :product="product" @update-product="updateProduct" /> <!-- menampilkan form product -->
 		<router-link to="/" class="back-button">Back</router-link> <!-- tombol back -->
 		<button @click="deleteProduct" class="delete-button">Delete</button> <!-- tombol delete -->
 	</div>

@@ -15,11 +15,11 @@
       "image": "https://placehold.co/150"
     },
     {
-      "id": "6",
       "title": "Fitness Tracker FitPro Max",
       "description": "Stay active and monitor your health with this feature-packed fitness tracker.",
-      "price": 79.99,
-      "image": "https://placehold.co/150"
+      "price": 79,
+      "image": "https://placehold.co/150",
+      "id": "6"
     },
     {
       "id": "7",

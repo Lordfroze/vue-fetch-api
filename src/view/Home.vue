@@ -2,6 +2,7 @@
 import ProductCard from '@/components/ProductCard.vue'
 import Pagination from '@/components/Pagination.vue'
 import Loading from '@/components/Loading.vue'
+import ProductForm from '@/components/ProductForm.vue'
 
 import { ref, watchEffect } from 'vue'; // import ref dan watch dari vue
 import axios from 'axios'; // import axios
@@ -46,6 +47,7 @@ function changePage(newPage) {
 		</div>
 
 	<main v-else>
+		<ProductForm /> <!-- menampilkan form product -->
 		<div class="product-grid">
 			<!-- menampilkan setiap product menggunakan v-for dan passing product sebagai props ke ProductCard -->
 			 <!-- karena menggunakan axios, data product ada di dalam property data -->
