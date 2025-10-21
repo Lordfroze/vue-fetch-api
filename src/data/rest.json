@@ -1,11 +1,11 @@
 {
   "products": [
     {
-      "id": "3",
-      "title": "Wireless Noise-Canceling Headphones",
-      "description": "Immerse yourself in high-quality audio with these comfortable and noise-canceling headphones.",
-      "price": 199.99,
-      "image": "https://placehold.co/150"
+      "title": "Edited Wireless Noise-Canceling Headphones",
+      "description": "Edited Immerse yourself in high-quality audio with these comfortable and noise-canceling headphones.",
+      "price": 200,
+      "image": "https://placehold.co/150",
+      "id": "3"
     },
     {
       "id": "5",

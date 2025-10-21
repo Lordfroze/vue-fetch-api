@@ -12,8 +12,11 @@ const price = ref('');
 const image = ref('');
 const id = ref('');
 
+// membuat watcher untuk props.product
+// watcher akan dijalankan setiap kali props.product berubah
+// watcher akan mengupdate nilai ref title, description, price, image, id dengan nilai dari props.product
 watchEffect(() => {
-	title.value = props.product?.title;
+	title.value = props.product?.title; // tanda ? berarti jika props.product.title ada nilai, maka assign ke title.value, jika tidak ada, assign ke ''
 	description.value = props.product?.description;
 	price.value = props.product?.price;
 	image.value = props.product?.image;
@@ -21,7 +24,7 @@ watchEffect(() => {
 });
 
 const showForm = ref(false); // membuat ref showForm dengan nilai awal false
-const isUpdate = computed(() => !!props.product);
+const isUpdate = computed(() => !!props.product); // mengecek kondisi apakah props.product ada nilai atau tidak
 
 const emit = defineEmits(['create-product', 'update-product']); // membuat emit create-product dan update-product
 
@@ -33,9 +36,9 @@ function saveProduct() {
 		price: price.value,
 		image: image.value,
 	};
-	if (isUpdate.value) {
-		emit('update-product', formData);
-	} else {
+	if (isUpdate.value) { // jika isUpdate bernilai true
+		emit('update-product', formData); // maka menjalankan emit update-product
+	} else {  // jika isUpdate bernilai false
 		emit('create-product', formData); // menjalankan emit create-product
 	}
 }
@@ -43,7 +46,7 @@ function saveProduct() {
 
 <template>
 	<div class="form-container">
-        <!-- tombol toggle form -->
+        <!-- tombol toggle form mengecek apakah isUpdate bernilai true atau false, jika true maka menampilkan tombol Edit, jika false maka menampilkan tombol Add -->
 		<button @click="showForm = !showForm">
 			{{ isUpdate ? 'Edit' : 'Add' }} Product
 		</button>

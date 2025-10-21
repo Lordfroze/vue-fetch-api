@@ -25,10 +25,11 @@ async function fetchData() { // fetchData akan dijalankan setelah component di r
 	}
 }
 
+// membuat fungsi update data product ke API
 async function updateProduct(product) {
 	try {
-		await axios.put(API_URL, product);
-		router.push('/');
+		await axios.put(API_URL, product); // mengupdate data product ke API_URL method sesuai api dari jsonserver
+		router.push('/'); // redirect ke halaman utama setelah mengupdate data product
 	} catch (error) {
 		console.error(error);
 	}
@@ -51,7 +52,7 @@ async function deleteProduct() {
 		<img :src="product.image" :alt="product.title" class="product-image" />
 		<p>{{ product.description }}</p>
 		<p>Rp{{ product.price }}</p>
-		<ProductForm :product="product" @update-product="updateProduct" /> <!-- menampilkan form product -->
+		<ProductForm :product="product" @update-product="updateProduct" /> <!--menampilkan form edit product dengan membuat prop product dan emit update-product ke <ProductForm>-->
 		<router-link to="/" class="back-button">Back</router-link> <!-- tombol back -->
 		<button @click="deleteProduct" class="delete-button">Delete</button> <!-- tombol delete -->
 	</div>
