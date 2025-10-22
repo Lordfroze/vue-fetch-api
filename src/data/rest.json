@@ -1,18 +1,18 @@
 {
   "products": [
     {
-      "title": "Edited Wireless Noise-Canceling Headphones",
+      "title": "Edited edited lagiWireless Noise-Canceling Headphones",
       "description": "Edited Immerse yourself in high-quality audio with these comfortable and noise-canceling headphones.",
       "price": 200,
       "image": "https://placehold.co/150",
       "id": "3"
     },
     {
-      "id": "5",
-      "title": "Digital Camera EOS R5",
+      "title": "Digital Camera EOS R5 edited",
       "description": "Capture professional-grade photos and videos with this high-performance mirrorless camera.",
-      "price": 2999.99,
-      "image": "https://placehold.co/150"
+      "price": 3000,
+      "image": "https://placehold.co/150",
+      "id": "5"
     },
     {
       "title": "Fitness Tracker FitPro Max",
@@ -419,6 +419,13 @@
       "description": "test lagi",
       "price": 12345,
       "image": "https://placehold.co/150"
+    },
+    {
+      "id": "87b9",
+      "title": "produk baru",
+      "description": "ini baru",
+      "price": 1234,
+      "image": "-"
     }
   ]
 }
